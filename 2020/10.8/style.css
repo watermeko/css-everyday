@@ -1,0 +1,49 @@
+.container{
+    height: 100vh;
+    background-color: rgb(7, 7, 27);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: 100vw;
+}
+.rocket{
+    background-image: url('rocket.png');
+    height: 99px;
+    width: 72px;
+    position: relative;
+    animation: shake 0.5s linear infinite alternate;
+}
+
+.rocket::after{
+    content: ' ';
+    height: 90px;
+    width: 10px;
+    background: linear-gradient(rgb(0, 140, 255),transparent);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 101%;
+}
+
+i{
+    background-color: white;
+    width: 1px;
+    position: absolute;
+    top: 0;
+    animation: line 1s linear infinite;
+}
+
+@keyframes shake{
+    from{
+        transform: translateY(-2px);
+    }
+    to{
+        transform: translateY(2px);
+    }
+}
+
+@keyframes line{
+    from{transform: translateY(0);}
+    to{transform: translateY(100vh);}
+}

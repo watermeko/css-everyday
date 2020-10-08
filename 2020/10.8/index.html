@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="rocket">
+            
+        </div>
+        <i></i>
+    </div>
+    <script>
+        let num=50;
+
+        function randNum(min,max){
+            return Math.ceil(Math.random()*(max-min)+min);
+        }
+
+        for(let i=0;i<num;i++){
+            let i = document.createElement('i');
+            i.style.left = randNum(1,100) + 'vw';
+            i.style.height = randNum(30,100) + 'px';
+            i.style.animationDuration = randNum(5,15)*0.1 + 's';
+
+            document.querySelector('.container').appendChild(i)
+        }
+    </script>
+</body>
+</html>
