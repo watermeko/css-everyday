@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span class="word"></span>
+
+    <style>
+        *{
+            padding: 0%;
+            margin: 0%;
+        }
+        body{
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(51, 126, 238, 0.671);
+        }
+        .word{
+            font-size: 55px;
+            color: white;
+        }
+        .word::after{
+            content: '|';
+            animation: change 0.3s linear infinite;
+        }
+        @keyframes change{
+            from{
+                opacity: 0;
+            }to{
+                opacity: 1;
+            }
+        }
+    </style>
+    <script>
+        let str = 'Hello World!';
+        let word = document.querySelector('.word');
+
+        function setText(t){
+            return new Promise((resovle,reject)=>{
+                setTimeout(()=>{
+                    word.innerHTML = t;
+                    resovle()
+                },100)
+            })
+        }
+
+        async function main(flag){
+            if(flag){
+                for(let i=0;i<str.length;i++){
+                    await setText(str.substr(0,i+1))
+                }
+            }else{
+                for(let i=str.length;i>=0;i--){
+                    await setText(str.substr(0,i+1))
+                }
+            }
+            setTimeout(()=>{
+                main(!flag)
+            },1000)
+        }
+        main(1)
+    </script>
+</body>
+</html>
